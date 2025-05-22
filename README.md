@@ -1,4 +1,5 @@
 #  EMG Repetition Analysis Tool
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15492712.svg)](https://doi.org/10.5281/zenodo.15492712)
 ![Python](https://img.shields.io/badge/python-3.10-blue)
 ![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
 ![Last Commit](https://img.shields.io/github/last-commit/ophiravina/emg-analysis)
