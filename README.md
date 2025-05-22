@@ -80,5 +80,6 @@ Ophir Ravina
 ## 🙏 Citation
 If you use this tool in your academic work, please cite:
 
-Ravina, O. (2025). EMG Repetition Analysis Tool. GitHub repository: https://github.com/ophiravina/emg-analysis
+Ravina, O. (2025). EMG Repetition Analysis Tool (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.15492712
+
 
