@@ -1,4 +1,8 @@
 #  EMG Repetition Analysis Tool
+![Python](https://img.shields.io/badge/python-3.10-blue)
+![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
+![Last Commit](https://img.shields.io/github/last-commit/ophiravina/emg-analysis)
+
 Python tool for EMG repetition detection and feature extraction
 tool for automated segmentation and analysis of surface EMG signals collected with Trigno™ sensors.  
 Designed for research applications across multiple subjects and sessions.
