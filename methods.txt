@@ -1,0 +1,62 @@
+EMG Repetition Analysis – Methods Documentation
+-----------------------------------------------
+
+Overview:
+This tool automates the segmentation and feature extraction of surface electromyography (sEMG) signals collected with Delsys Trigno™ wireless sensors. It is designed for reproducible and efficient analysis across multiple sessions and subjects in research settings.
+
+Signal Input:
+- Input: CSV files exported from EMG collection software
+- Sampling Rate: 1925.926 Hz (Trigno system)
+- Channels: 1–3 EMG channels per recording
+
+Preprocessing:
+1. Header Detection:
+   - Automatically locates the row containing actual channel headers by detecting multiple "X[s]" and "EMG" columns.
+
+2. Channel Selection:
+   - User is prompted to select EMG channels from the parsed headers.
+
+3. Signal Normalization:
+   - EMG signal is normalized by dividing by the maximum absolute amplitude in that session for each channel.
+   - This standardization enables inter-subject and inter-channel comparisons.
+
+Envelope Smoothing:
+- An envelope is created using a 200-sample moving average of the absolute EMG signal.
+- This reduces high-frequency noise while preserving the overall contraction shape.
+
+Thresholding:
+- The envelope is used to estimate the baseline activity level using robust statistics:
+  - Median of the envelope
+  - Median Absolute Deviation (MAD)
+- The detection threshold is calculated as:
+  
+      threshold = median + 6 × MAD
+
+- This method provides stability in the presence of noise and outliers.
+
+Segmentation:
+- Candidate repetitions are identified when the envelope crosses above the threshold.
+- To eliminate noise bursts, segments must have a minimum duration of 0.3 seconds (≈577 samples).
+- If more segments are detected than expected, the top-N based on envelope amplitude are retained.
+
+Feature Extraction:
+For each valid repetition:
+- **Start and End Time (s)**
+- **Duration (s)**
+- **Root Mean Square (RMS)** of normalized EMG
+- **Mean Frequency (MF)** via FFT-based power spectrum estimation
+
+Visualization:
+- Each EMG channel is plotted with repetition regions highlighted.
+- Plots are saved as PNG files alongside the results.
+
+Output Files:
+- CSV file containing all repetition-level features with one row per repetition
+- JSON file logging metadata per channel (e.g., threshold values, normalization info)
+- PNG images per channel for visual inspection of segmentation
+
+Recommended Citation:
+Ophir Ravina. (2024). EMG Repetition Analysis Tool. GitHub: https://github.com/ophiravina/emg-analysis
+
+License:
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
